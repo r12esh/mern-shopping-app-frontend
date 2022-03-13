@@ -3,8 +3,6 @@ import Base from "../core/Base";
 import {Link} from "react-router-dom";
 import {createAProduct, getAllCategories} from "./helper/adminapicall";
 import {isAuthenticated} from "../auth/helper";
-import {logDOM} from "@testing-library/react";
-
 
 const AddProduct = () => {
 
