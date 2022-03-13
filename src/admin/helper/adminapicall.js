@@ -35,12 +35,11 @@ export const getAllCategories = () => {
 
 //Product calls:-
 //Create a product:
-export const createProduct = (userId, token, product) => {
+export const createAProduct = (userId, token, product) => {
   return fetch(`${API}/product/create/${userId}`, {
     method: "POST",
     headers: {
       Accept: "application/json",
-      "Content-type": "application/json",
       Authorization: `Bearer ${token}`,
     },
     body: product
@@ -54,12 +53,11 @@ export const createProduct = (userId, token, product) => {
 }
 
 //Update a product:
-export const updateProduct = (productId, userId, token, product) => {
+export const updateAProduct = (productId, userId, token, product) => {
   return fetch(`${API}/product/${productId}/${userId}`, {
     method: "PUT",
     headers: {
       Accept: "application/json",
-      "Content-type": "application/json",
       Authorization: `Bearer ${token}`,
     },
     body: product
