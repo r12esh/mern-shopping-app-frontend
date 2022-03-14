@@ -79,7 +79,7 @@ const AddProduct = () => {
   const successMessage = () => {
     return (
       <div
-        className="alert alert-success mt-3"
+        className="alert fw-bold alert-success mt-3 fs-5"
         style={{display: createdProduct ? "" : "none"}}
       >
         {createdProduct} created succesfully
