@@ -46,7 +46,6 @@ const AddCategory = ({match}) => {
     setError("");
     setSuccess(false);
 
-    //Backend request fired
     updateACategory(categorytId, user._id, token, {name})
       .then(data => {
           if (data.error) {
