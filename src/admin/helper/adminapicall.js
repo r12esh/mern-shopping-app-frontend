@@ -11,6 +11,24 @@ export const createACategory = (userId, token, name) => {
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(name)
+  }).then(response => {
+    return response.json()
+  })
+    .catch(err => {
+      console.log(err)
+    })
+}
+
+//Update a category
+export const updateACategory = (categoryId, userId, token, name) => {
+  return fetch(`${API}/category/${categoryId}/${userId}`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(name)
   })
     .then(response => {
       return response.json()
@@ -20,8 +38,17 @@ export const createACategory = (userId, token, name) => {
     })
 }
 
-const updateACategory = () => {
-  //
+//Get a category
+export const getACategopry = (categoryId) => {
+  return fetch(`${API}/category/${categoryId}`, {
+    method: "GET"
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => {
+      console.log(err)
+    })
 }
 
 //Get all the categories:
@@ -37,8 +64,20 @@ export const getAllCategories = () => {
     })
 }
 
-const deleteACategory = () => {
-  //
+export const deleteACategory = (categoryId, userId, token) => {
+  return fetch(`${API}/category/${categoryId}/${userId}`, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "Content-type": "application/json",
+      Authorization: `Bearer ${token}`,
+    }
+  }).then(response => {
+    return response.json()
+  })
+    .catch(err => {
+      console.log(err)
+    })
 }
 
 //Product calls:-
@@ -106,7 +145,7 @@ export const getAllProducts = () => {
 }
 
 //Delete a product:
-export const deleteProduct = (productId, userId, token, product) => {
+export const deleteAProduct = (productId, userId, token) => {
   return fetch(`${API}/product/${productId}/${userId}`, {
     method: "DELETE",
     headers: {
