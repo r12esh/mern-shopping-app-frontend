@@ -46,7 +46,7 @@ const AddProduct = () => {
         setValues({...values, allCategories: [...data], formData: new FormData()});
         // console.log("Categories hai ye", allCategories)
       }
-    })
+    });
   }
 
   const handleChange = name => event => {

@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import Base from "../core/Base";
 import {isAuthenticated} from "../auth/helper";
 import {Link} from "react-router-dom";
-import {createCategory} from "./helper/adminapicall";
+import {createACategory} from "./helper/adminapicall";
 
 
 const AddCategory = () => {
@@ -33,7 +33,7 @@ const AddCategory = () => {
     setSuccess(false);
 
     //Backend request fired
-    createCategory(user._id, token, {name})
+    createACategory(user._id, token, {name})
       .then(data => {
           if (data.error) {
             setError(true);

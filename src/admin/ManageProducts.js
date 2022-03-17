@@ -47,14 +47,14 @@ const ManageProducts = () => {
             {
               products.map((product, index) => {
                 return (
-                  <div className="row text-center mb-2 ">
+                  <div key={index} className="row text-center mb-2 ">
                     <div className="col-4">
                       <h3 className="text-white text-start">{product.name}</h3>
                     </div>
                     <div className="col-4">
                       <Link
                         className="btn btn-success"
-                        to={`/admin/product/update/productId`}
+                        to={`/admin/product/update/${product._id}`}
                       >
                         <span className="">Update</span>
                       </Link>

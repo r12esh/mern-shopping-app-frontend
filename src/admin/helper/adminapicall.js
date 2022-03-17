@@ -2,7 +2,7 @@ import {API} from "../../backend";
 
 //Category calls:-
 //Create a category:
-export const createCategory = (userId, token, name) => {
+export const createACategory = (userId, token, name) => {
   return fetch(`${API}/category/create/${userId}`, {
     method: "POST",
     headers: {
@@ -20,6 +20,10 @@ export const createCategory = (userId, token, name) => {
     })
 }
 
+const updateACategory = () => {
+  //
+}
+
 //Get all the categories:
 export const getAllCategories = () => {
   return fetch(`${API}/categories`, {
@@ -31,6 +35,10 @@ export const getAllCategories = () => {
     .catch(err => {
       console.log(err)
     })
+}
+
+const deleteACategory = () => {
+  //
 }
 
 //Product calls:-
@@ -71,7 +79,7 @@ export const updateAProduct = (productId, userId, token, product) => {
 }
 
 //Get a product:
-const getProduct = productId => {
+export const getAProduct = productId => {
   return fetch(`${API}/product/${productId}`, {
     method: "GET",
   })
