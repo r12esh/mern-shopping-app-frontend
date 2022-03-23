@@ -26,13 +26,15 @@ const Home = () => {
     <Base title="Home page" description="Welcome to Tshirt store">
       <div className="row text-center">
         <h1 className="text-white">All of T-shirts</h1>
-        {products.map((product, index) => {
-          return (
-            <div className="col-3 mb-4">
-              <Card/>
-            </div>
-          )
-        })}
+        <div className="row">
+          {products.map((product, index) => {
+            return (
+              <div key={index} className="col-3 mb-4">
+                <Card product={product}/>
+              </div>
+            )
+          })}
+        </div>
       </div>
     </Base>
   );

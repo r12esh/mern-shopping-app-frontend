@@ -13,6 +13,7 @@ import AddProduct from "./admin/AddProduct";
 import ManageProducts from "./admin/ManageProducts";
 import UpdateProduct from "./admin/UpdateProduct";
 import UpdateCategory from "./admin/UpdateCategory";
+import Cart from "./core/Cart";
 
 
 const Routes = () => {
@@ -22,6 +23,7 @@ const Routes = () => {
         <Route exact path="/" component={Home}/>
         <Route exact path="/signup" component={Signup}/>
         <Route exact path="/signin" component={Signin}/>
+        <Route exact path="/cart" component={Cart}/>
         <PrivateRoute exact path="/user/dashboard" component={UserDashBoard}/>
         <AdminRoute exact path="/admin/dashboard" component={AdminDashBoard}/>
         <AdminRoute exact path="/admin/create/category" component={AddCategory}/>
