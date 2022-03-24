@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import Base from "./Base";
 import Card from "./Card";
 import {loadCart} from "./helper/cartHelper";
+import StripeCheckout from "./StripeCheckout";
 
 
 const Cart = () => {
@@ -12,7 +13,7 @@ const Cart = () => {
   const loadAllProducts = () => {
     return (
       <div>
-        <h1>
+        <h2>
           This section is to load products
           {
             products.map((product, index) => {
@@ -28,21 +29,11 @@ const Cart = () => {
               )
             })
           }
-        </h1>
+        </h2>
       </div>
     )
   }
-
-  const loadCheckout = () => {
-    return (
-      <div>
-        <h1>
-          This section is for checkout
-        </h1>
-      </div>
-    )
-  }
-
+  
   useEffect(() => {
     setProducts(loadCart())
   }, [reload])
@@ -51,7 +42,13 @@ const Cart = () => {
     <Base title="Cart page" description="Ready to checkout">
       <div className="row text-center">
         <div className="col-6">{loadAllProducts()}</div>
-        <div className="col-6">{loadCheckout()}</div>
+        <div className="col-6">
+          <StripeCheckout
+            products={products}
+            setReload={setReload}
+            reload={reload}
+          />
+        </div>
       </div>
     </Base>
   );
