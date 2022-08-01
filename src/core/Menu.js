@@ -1,26 +1,21 @@
-import React, {Fragment} from "react";
-import {Link, withRouter} from "react-router-dom";
-import {signout, isAuthenticated} from "../auth/helper";
-
+import React, { Fragment } from "react";
+import { Link, withRouter } from "react-router-dom";
+import { signout, isAuthenticated } from "../auth/helper";
 
 const currentTab = (history, path) => {
   if (history.location.pathname === path) {
-    return {color: "#198754"}
+    return { color: "#198754" };
   } else {
-    return {color: "#ffffff"}
+    return { color: "#ffffff" };
   }
-}
+};
 
-const Menu = ({history}) => {
+const Menu = ({ history }) => {
   return (
     <div>
       <ul className="nav nav-tabs bg-dark">
         <li className="nav-item">
-          <Link
-            style={currentTab(history, "/")}
-            className="nav-link"
-            to="/"
-          >
+          <Link style={currentTab(history, "/")} className="nav-link" to="/">
             Home
           </Link>
         </li>
@@ -33,73 +28,65 @@ const Menu = ({history}) => {
             Cart
           </Link>
         </li>
-        {
-          isAuthenticated() && isAuthenticated().user.role == 0 && (
+        {isAuthenticated() && isAuthenticated().user.role === 0 && (
+          <li className="nav-item">
+            <Link
+              style={currentTab(history, "/user/dashboard")}
+              className="nav-link"
+              to="/user/dashboard"
+            >
+              U. Dashboard
+            </Link>
+          </li>
+        )}
+        {isAuthenticated() && isAuthenticated().user.role === 1 && (
+          <li className="nav-item">
+            <Link
+              style={currentTab(history, "/admin/dashboard")}
+              className="nav-link"
+              to="/admin/dashboard"
+            >
+              A. Dashboard
+            </Link>
+          </li>
+        )}
+        {!isAuthenticated() && (
+          <Fragment>
             <li className="nav-item">
               <Link
-                style={currentTab(history, "/user/dashboard")}
+                style={currentTab(history, "/signin")}
                 className="nav-link"
-                to="/user/dashboard"
+                to="/signin"
               >
-                U. Dashboard
+                Sign in
               </Link>
             </li>
-          )
-        }
-        {
-          isAuthenticated() && isAuthenticated().user.role == 1 && (
             <li className="nav-item">
               <Link
-                style={currentTab(history, "/admin/dashboard")}
+                style={currentTab(history, "/signup")}
                 className="nav-link"
-                to="/admin/dashboard"
+                to="/signup"
               >
-                A. Dashboard
+                Sign up
               </Link>
             </li>
-          )
-        }
-        {
-          !isAuthenticated() && (
-            <Fragment>
-              <li className="nav-item">
-                <Link
-                  style={currentTab(history, "/signin")}
-                  className="nav-link"
-                  to="/signin"
-                >
-                  Sign in
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  style={currentTab(history, "/signup")}
-                  className="nav-link"
-                  to="/signup"
-                >
-                  Sign up
-                </Link>
-              </li>
-            </Fragment>
-          )
-        }
-        {
-          isAuthenticated() && (
-            <li className="nav-item">
+          </Fragment>
+        )}
+        {isAuthenticated() && (
+          <li className="nav-item">
             <span
               className="nav-link text-warning"
-              style={{cursor: "pointer"}}
+              style={{ cursor: "pointer" }}
               onClick={() => {
                 signout(() => {
-                  history.push("/")
-                })
+                  history.push("/");
+                });
               }}
             >
               Sign out
             </span>
-            </li>
-          )
-        }
+          </li>
+        )}
       </ul>
     </div>
   );

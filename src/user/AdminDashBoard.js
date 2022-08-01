@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 import Base from "../core/Base";
-import {isAuthenticated} from "../auth/helper/index";
-import {Link} from "react-router-dom";
-
+import { isAuthenticated } from "../auth/helper/index";
+import { Link } from "react-router-dom";
 
 const AdminDashBoard = () => {
-
-  const {user: {name, email, role}} = isAuthenticated();
+  const {
+    user: { name, email, role },
+  } = isAuthenticated();
 
   const adminLeftSide = () => {
     return (
@@ -40,8 +40,8 @@ const AdminDashBoard = () => {
           </li>
         </ul>
       </div>
-    )
-  }
+    );
+  };
 
   const adminRightSide = () => {
     return (
@@ -59,13 +59,12 @@ const AdminDashBoard = () => {
           </li>
         </ul>
       </div>
-    )
-  }
-
+    );
+  };
 
   return (
     <Base
-      title="Welcome to Admin dashboard"
+      title="Welcome to strboard"
       description="Manage all of your products here"
       className="container bg-success p-3"
     >
