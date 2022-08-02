@@ -1,4 +1,4 @@
-import {API} from "../../backend";
+import { API } from "../../backend";
 
 export const createOrder = (userId, token, orderData) => {
   return fetch(`${API}/order/create/${userId}`, {
@@ -6,10 +6,10 @@ export const createOrder = (userId, token, orderData) => {
     headers: {
       Accept: "application/json",
       "Content-type": "application/json",
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({order: orderData})
-  }).then(response => response.json())
-    .catch(err => console.log(err))
-
-}
+    body: JSON.stringify({ order: orderData }),
+  })
+    .then((response) => response.json())
+    .catch((err) => console.log(err));
+};
